@@ -21,6 +21,7 @@ const ExpenseItem = (props) => {
 //     };
 
     return (
+    <li>
     <div className='expense-item'>
     <ExpenseDate date={props.date} />
     <div className='expense-item__description'>
@@ -30,8 +31,8 @@ const ExpenseItem = (props) => {
         {/* <ExpenseDetails title={props.title} amount={props.amount} /> */}
         {/* <button onClick={clickHandler}>Change Title</button>
         <button onClick={amountHandler}>Change Amount</button> */}
-
-    </div>)
+            </div>
+            </li>)
 };
 
 export default ExpenseItem;
