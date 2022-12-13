@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -37,38 +37,42 @@ const Login = (props) => {
     { value: '', isValid: undefined });
   
   const [passwordState, dispatchpassword] = useReducer(passwordReducer,
-      { value: '', isValid: undefined });
+    { value: '', isValid: undefined });
+  
+  const { isValid: emailIsValid } = emailState;   //alias assignment
+  const {  isvalid: passwordIsValid } = passwordState;
 
-  // useEffect(() => {
-  //   const Handler = setTimeout(() => {
-  //     console.log('check form validity!');
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6 && enteredCollege.trim().length > 0
-  //     );
-  //   }, 500);
+  useEffect(() => {
+    const Handler = setTimeout(() => {
+      console.log('checking form validity!');
+      setFormIsValid(
+        //emailState.isValid && passwordState.isValid
+        emailIsValid && passwordIsValid
+      );
+    }, 500);
 
-  //   return () => {
-  //     console.log('CLEAN UP');
-  //     clearTimeout(Handler);
-  //   };
-
-  //  },[enteredEmail, enteredPassword, enteredCollege]);
+    return () => {
+      console.log('CLEAN UP');
+      clearTimeout(Handler);
+    };
+  },[emailIsValid, passwordIsValid]);
+   //},[emailState, passwordState]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', val: event.target.value});
 
-    setFormIsValid(
-            event.target.value.includes('@') && passwordState.isValid
-          );
+    // setFormIsValid(
+    //         event.target.value.includes('@') && passwordState.isValid
+    //       );
   };
 
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
     dispatchpassword({type: 'USER_INPUT', val: event.target.value});
 
-    setFormIsValid(
-      emailState.isValid && event.target.value.trim().length > 6 
-    );
+    // setFormIsValid(
+    //   emailState.isValid && event.target.value.trim().length > 6 
+    // );
   };
 
   // const collegeChangeHandler = (event) => {
