@@ -11,11 +11,14 @@ const HeaderCartButton = props => {
         return parseInt(curNumber) + parseInt(item.quantity);
     }, 0);
 
+    console.log(numberOfCartItems);
+
     return (
         <button className={classes.button} onClick={props.onClick}>
             <span className={classes.icon}>
                 <CartIcon />
             </span>
+            <span>Your Cart</span>
             <span>{cartCtx.message}</span>
             <span className={classes.badge}>{numberOfCartItems}</span>
         </button>

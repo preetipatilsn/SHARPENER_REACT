@@ -12,11 +12,11 @@ const MealItemForm = props => {
 
         const quantity = document.getElementById("amount_" + props.id).value;
         cartCtx.addItem({ ...props.item, quantity: quantity });
-        console.log(cartCtx.items);
+        // console.log(cartCtx.items);
     };
     return (
         <form className={classes.form}>
-            {console.log(cartCtx)}
+            {/* {console.log(cartCtx)} */}
             <Input label='Amount' input={{
                 id: 'amount_' + props.id,
                 type: 'number',
