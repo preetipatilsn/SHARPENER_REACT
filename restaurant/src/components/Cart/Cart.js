@@ -8,7 +8,7 @@ import CartItem from "./CartItem";
 const Cart = (props) => {
   const cartContext = useContext(CartContext);
 
-  const totalAmount = `Rs ${cartContext.totalAmount.toFixed('2')}`;
+  const totalAmount = `${cartContext.totalAmount.toFixed('2')}`;
   const hasItems = cartContext.items.length > 0;
   const decreaseItemCountHandler = (item) => {
     // if (item.quantity < 1) {
@@ -20,7 +20,7 @@ const Cart = (props) => {
   };
 
   const increaseItemCountHandler = (item) => {
-    cartContext.addItem(item);
+    cartContext.addItemFromCart(item);
   };
   const data = cartContext.items.map((item) => (
     <CartItem
